@@ -378,16 +378,25 @@
     .phone-stack {
       position: relative;
       width: 292px;
-      height: 533px;
+      height: 620px;
     }
 
     .phone-img {
       width: 292px;
-      height: 533px;
+      height: 620px;
       object-fit: contain;
       display: block;
       animation: float 6s ease-in-out infinite;
       filter: drop-shadow(0 40px 80px rgba(0,0,0,0.5)) drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+    }
+
+    .screen-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      border-radius: 52px;
     }
 
     .phone {
@@ -2189,12 +2198,18 @@
 
       .phone-stack {
         width: 240px;
-        height: 438px;
+        height: 510px;
+      }
+
+      .phone {
+        width: 240px;
+        height: 510px;
+        border-radius: 50px;
       }
 
       .phone-img {
         width: 240px;
-        height: 438px;
+        height: 510px;
       }
 
       .phone-screen {
@@ -2606,7 +2621,12 @@
       </div>
 
       <!-- Phone -->
-      <img class="phone-img" src="phone-screen.png" alt="Price Errors app showing a free dog food deal" />
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <img class="screen-img" src="phone-screen.png" alt="Price Errors app showing deals" />
+        </div>
+      </div>
     </div>
   </div>
 </section>
