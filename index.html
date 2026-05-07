@@ -1847,118 +1847,331 @@
        NEWSLETTER
     ───────────────────────────────────────── */
     .newsletter {
-      padding: 100px 32px;
-      background: #fff;
+      position: relative;
+      padding: 130px 32px 140px;
+      background:
+        radial-gradient(ellipse 800px 600px at 15% 30%, rgba(0,200,151,0.13), transparent 60%),
+        radial-gradient(ellipse 700px 500px at 85% 70%, rgba(255,201,61,0.13), transparent 60%),
+        var(--bg);
+      overflow: hidden;
       text-align: center;
     }
 
-    .newsletter-inner {
-      max-width: 620px;
-      margin: 0 auto;
+    .newsletter-wordmark {
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: clamp(7rem, 18vw, 17rem);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      color: rgba(10,10,10,0.035);
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 0;
+      line-height: 1;
     }
 
+    .newsletter-inner {
+      position: relative;
+      max-width: 720px;
+      margin: 0 auto;
+      z-index: 2;
+    }
+
+    /* Floating preview cards */
+    .newsletter-deck {
+      position: absolute;
+      width: 250px;
+      background: white;
+      border-radius: 18px;
+      padding: 14px 16px;
+      box-shadow:
+        0 24px 60px rgba(10,10,10,0.12),
+        inset 0 1px 0 rgba(255,255,255,0.7);
+      border: 1px solid rgba(10,10,10,0.05);
+      z-index: 1;
+      text-align: left;
+      animation: float-slow 7s ease-in-out infinite;
+    }
+
+    .newsletter-deck.left {
+      left: clamp(-20px, 4vw, 90px);
+      top: 22%;
+      transform: rotate(-7deg);
+    }
+
+    .newsletter-deck.right {
+      right: clamp(-20px, 4vw, 90px);
+      top: 58%;
+      transform: rotate(6deg);
+      animation-delay: -3.5s;
+    }
+
+    @keyframes float-slow {
+      0%, 100% { transform: rotate(var(--rot, -7deg)) translateY(0); }
+      50%      { transform: rotate(var(--rot, -7deg)) translateY(-10px); }
+    }
+
+    .newsletter-deck.left  { --rot: -7deg; }
+    .newsletter-deck.right { --rot: 6deg; }
+
+    .deck-row {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .deck-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      color: white;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.3);
+    }
+
+    .deck-icon.green  { background: linear-gradient(135deg, var(--grape), var(--grape-2)); }
+    .deck-icon.amber  { background: linear-gradient(135deg, #FFC93D, #FF9C2E); }
+
+    .deck-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .deck-store {
+      color: var(--mid);
+      font-weight: 700;
+      font-size: 0.66rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .deck-deal {
+      font-weight: 800;
+      color: var(--black);
+      font-size: 0.92rem;
+      margin-top: 2px;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .deck-meta {
+      display: flex;
+      align-items: baseline;
+      gap: 7px;
+      margin-top: 4px;
+    }
+
+    .deck-meta strong {
+      font-size: 1rem;
+      color: var(--grape);
+      font-weight: 800;
+    }
+
+    .deck-meta del {
+      color: var(--soft);
+      font-size: 0.78rem;
+    }
+
+    .deck-meta .deck-tag {
+      margin-left: auto;
+      background: rgba(0,200,151,0.12);
+      color: var(--grape);
+      font-size: 0.62rem;
+      font-weight: 800;
+      padding: 3px 7px;
+      border-radius: 6px;
+      letter-spacing: 0.04em;
+    }
+
+    /* Badge */
     .newsletter-badge {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      background: var(--grape-tint);
+      gap: 9px;
+      background: white;
+      border: 1.5px solid rgba(0,200,151,0.18);
       color: var(--grape);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 800;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      padding: 6px 14px;
+      padding: 8px 16px 8px 14px;
       border-radius: 100px;
-      margin-bottom: 22px;
+      box-shadow: 0 8px 24px rgba(0,200,151,0.1);
+      margin-bottom: 26px;
     }
 
-    .newsletter-badge svg {
-      flex-shrink: 0;
+    .newsletter-badge .pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--grape);
+      box-shadow: 0 0 0 0 rgba(0,200,151,0.6);
+      animation: pulse-dot 2s ease-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%   { box-shadow: 0 0 0 0 rgba(0,200,151,0.55); }
+      70%  { box-shadow: 0 0 0 10px rgba(0,200,151,0); }
+      100% { box-shadow: 0 0 0 0 rgba(0,200,151,0); }
     }
 
     .newsletter-title {
-      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
       font-weight: 900;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.045em;
       color: var(--black);
-      line-height: 1.1;
-      margin: 0 0 16px;
+      line-height: 1.05;
+      margin: 0 0 18px;
     }
 
     .newsletter-title em {
       color: var(--grape);
       font-style: normal;
+      position: relative;
+      display: inline-block;
+      z-index: 1;
+    }
+
+    .newsletter-title em::after {
+      content: '';
+      position: absolute;
+      left: -4px;
+      right: -4px;
+      bottom: 6px;
+      height: 14px;
+      background: rgba(255,201,61,0.5);
+      z-index: -1;
+      border-radius: 3px;
+      transform: skewX(-6deg);
     }
 
     .newsletter-sub {
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       color: var(--mid);
-      line-height: 1.6;
-      margin: 0 0 36px;
+      line-height: 1.65;
+      margin: 0 auto 36px;
+      max-width: 480px;
+    }
+
+    .newsletter-sub strong {
+      color: var(--black);
+      font-weight: 700;
     }
 
     .newsletter-form {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 14px;
+      gap: 18px;
+      position: relative;
+      z-index: 3;
     }
 
     .newsletter-input-wrap {
       display: flex;
+      align-items: center;
       width: 100%;
-      max-width: 480px;
+      max-width: 500px;
       border-radius: 100px;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.08), 0 0 0 1.5px rgba(0,200,151,0.18);
-      overflow: hidden;
-      background: #fff;
+      background: white;
+      padding: 6px 6px 6px 8px;
+      box-shadow:
+        0 0 0 2px rgba(0,200,151,0.18),
+        0 30px 60px -15px rgba(0,200,151,0.28),
+        0 12px 30px -10px rgba(10,10,10,0.08);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+
+    .newsletter-input-wrap:focus-within {
+      box-shadow:
+        0 0 0 2px var(--grape),
+        0 36px 70px -16px rgba(0,200,151,0.42),
+        0 12px 30px -10px rgba(10,10,10,0.1);
+      transform: translateY(-2px);
+    }
+
+    .newsletter-input-wrap > svg {
+      flex-shrink: 0;
+      margin-left: 8px;
+      color: var(--soft);
     }
 
     .newsletter-input {
       flex: 1;
       border: none;
       outline: none;
-      padding: 15px 22px;
-      font-size: 0.98rem;
+      padding: 14px 18px 14px 12px;
+      font-size: 1rem;
       font-family: inherit;
+      font-weight: 500;
       color: var(--black);
       background: transparent;
       min-width: 0;
     }
 
     .newsletter-input::placeholder {
-      color: #aaa;
+      color: #b8b8b8;
+      font-weight: 500;
     }
 
     .newsletter-btn {
       flex-shrink: 0;
-      background: var(--grape);
+      background: linear-gradient(135deg, var(--grape), var(--grape-2));
       color: #fff;
       border: none;
       cursor: pointer;
-      padding: 14px 26px;
+      padding: 14px 24px;
       font-size: 0.95rem;
       font-weight: 700;
       font-family: inherit;
       border-radius: 100px;
-      margin: 5px;
-      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      box-shadow: 0 10px 22px rgba(0,200,151,0.4);
     }
 
     .newsletter-btn:hover {
-      background: var(--grape-2);
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,200,151,0.3);
+      box-shadow: 0 16px 32px rgba(0,200,151,0.5);
     }
 
-    .newsletter-btn:active {
-      transform: translateY(0);
+    .newsletter-btn svg {
+      transition: transform 0.2s;
+    }
+
+    .newsletter-btn:hover svg {
+      transform: translateX(3px);
     }
 
     .newsletter-disclaimer {
-      font-size: 0.82rem;
-      color: #bbb;
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.85rem;
+      color: var(--soft);
       margin: 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .newsletter-disclaimer span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .newsletter-disclaimer svg {
+      color: var(--grape);
+      flex-shrink: 0;
     }
 
     .newsletter-success {
@@ -1972,21 +2185,38 @@
       font-size: 0.98rem;
       padding: 14px 24px;
       border-radius: 100px;
+      box-shadow: 0 12px 30px rgba(0,200,151,0.2);
+    }
+
+    @media (max-width: 980px) {
+      .newsletter-deck { display: none; }
     }
 
     @media (max-width: 768px) {
-      .newsletter { padding: 72px 24px; }
+      .newsletter { padding: 90px 24px 100px; }
+      .newsletter-disclaimer { gap: 10px; font-size: 0.8rem; }
     }
 
     @media (max-width: 480px) {
-      .newsletter { padding: 56px 16px; }
+      .newsletter { padding: 72px 16px 80px; }
       .newsletter-input-wrap {
         flex-direction: column;
-        border-radius: 18px;
-        box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+        border-radius: 22px;
+        padding: 8px;
+        gap: 6px;
       }
-      .newsletter-input { padding: 15px 20px; border-bottom: 1px solid #f0f0f0; }
-      .newsletter-btn { margin: 0 8px 8px; border-radius: 12px; padding: 14px; }
+      .newsletter-input-wrap > svg { display: none; }
+      .newsletter-input {
+        width: 100%;
+        padding: 14px 18px;
+        text-align: center;
+      }
+      .newsletter-btn {
+        width: 100%;
+        justify-content: center;
+        border-radius: 16px;
+        padding: 14px;
+      }
     }
 
     /* ─────────────────────────────────────────
@@ -3233,21 +3463,64 @@
 
 
 <!-- ── NEWSLETTER ── -->
-<section class="newsletter">
+<section class="newsletter" id="newsletter">
+  <div class="newsletter-wordmark" aria-hidden="true">priceerrors</div>
+
+  <!-- Floating preview cards -->
+  <div class="newsletter-deck left" aria-hidden="true">
+    <div class="deck-row">
+      <div class="deck-icon green">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      </div>
+      <div class="deck-text">
+        <div class="deck-store">Target · 12 min ago</div>
+        <div class="deck-deal">AirPods Pro 2</div>
+      </div>
+    </div>
+    <div class="deck-meta">
+      <strong>$24.99</strong>
+      <del>$249</del>
+      <span class="deck-tag">PRICE ERROR</span>
+    </div>
+  </div>
+
+  <div class="newsletter-deck right" aria-hidden="true">
+    <div class="deck-row">
+      <div class="deck-icon amber">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4z"/></svg>
+      </div>
+      <div class="deck-text">
+        <div class="deck-store">Petsmart · just now</div>
+        <div class="deck-deal">Free Dog Food Sample</div>
+      </div>
+    </div>
+    <div class="deck-meta">
+      <strong>FREE</strong>
+      <del>$18</del>
+      <span class="deck-tag">FREEBIE</span>
+    </div>
+  </div>
+
   <div class="newsletter-inner">
     <div class="newsletter-badge">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="4" width="20" height="16" rx="3"/>
-        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-      </svg>
+      <span class="pulse" aria-hidden="true"></span>
       Weekly deals digest
     </div>
-    <h2 class="newsletter-title">Get the best deals<br><em>before they're gone.</em></h2>
-    <p class="newsletter-sub">The biggest price errors and freebies of the week, curated and delivered straight to your inbox. No spam, ever.</p>
+    <h2 class="newsletter-title">Get the best deals<br/><em>before they're gone.</em></h2>
+    <p class="newsletter-sub">A handpicked digest of the week's biggest <strong>price errors</strong>, <strong>glitches</strong>, and <strong>freebies</strong>, delivered every Sunday. No spam, ever.</p>
     <form class="newsletter-form" id="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
       <div class="newsletter-input-wrap" id="newsletter-input-wrap">
-        <input type="email" class="newsletter-input" id="newsletter-email" placeholder="Enter your email address" required autocomplete="email" />
-        <button type="submit" class="newsletter-btn">Subscribe</button>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="4" width="20" height="16" rx="3"/>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+        </svg>
+        <input type="email" class="newsletter-input" id="newsletter-email" placeholder="you@example.com" required autocomplete="email" />
+        <button type="submit" class="newsletter-btn">
+          Subscribe
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+        </button>
       </div>
       <div class="newsletter-success" id="newsletter-success">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -3255,7 +3528,20 @@
         </svg>
         You're in! Check your inbox for a welcome deal.
       </div>
-      <p class="newsletter-disclaimer">Join 48,000+ deal hunters. Unsubscribe anytime.</p>
+      <div class="newsletter-disclaimer">
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Free forever
+        </span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          48,000+ subscribers
+        </span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Unsubscribe anytime
+        </span>
+      </div>
     </form>
   </div>
 </section>
