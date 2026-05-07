@@ -1,0 +1,8 @@
+# Price Errors — robots.txt
+User-agent: *
+Allow: /
+Disallow: /.git/
+Disallow: /.claude/
+
+# Sitemap
+Sitemap: https://priceerrors.app/sitemap.xml
