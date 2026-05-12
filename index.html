@@ -652,66 +652,16 @@
     .phone-stack {
       position: relative;
       width: 292px;
-      height: 510px;
+      height: 576px;
     }
 
     .phone-img {
       width: 292px;
-      height: 510px;
+      height: 576px;
       object-fit: contain;
       display: block;
       animation: float 6s ease-in-out infinite;
-      filter: drop-shadow(0 40px 80px rgba(0,0,0,0.5)) drop-shadow(0 20px 40px rgba(0,0,0,0.3));
-    }
-
-    .screen-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-      border-radius: 52px;
-    }
-
-    .phone {
-      width: 292px;
-      height: 510px;
-      background: #0d0d10;
-      border-radius: 62px;
-      border: 8px solid #111114;
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,0.12),
-        0 0 0 1px #303036,
-        0 60px 100px -20px rgba(0,0,0,0.38),
-        0 30px 60px -15px rgba(255,255,255,0.16);
-      overflow: hidden;
-      position: relative;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .phone::before,
-    .phone::after {
-      content: '';
-      position: absolute;
-      z-index: 12;
-      background: #050507;
-      opacity: 0.9;
-    }
-
-    .phone::before {
-      left: -5px;
-      top: 132px;
-      width: 4px;
-      height: 82px;
-      border-radius: 4px 0 0 4px;
-    }
-
-    .phone::after {
-      right: -5px;
-      top: 176px;
-      width: 4px;
-      height: 104px;
-      border-radius: 0 4px 4px 0;
+      filter: drop-shadow(0 40px 80px rgba(0,0,0,0.45)) drop-shadow(0 20px 40px rgba(0,0,0,0.28));
     }
 
     @keyframes float {
@@ -719,26 +669,9 @@
       50%   { transform: translateY(-12px); }
     }
 
-    .phone-notch {
-      position: absolute;
-      top: 14px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 94px;
-      height: 30px;
-      background: #050507;
-      border-radius: 100px;
-      box-shadow: inset 0 -1px 0 rgba(255,255,255,0.08);
-      z-index: 10;
-    }
-
-    .phone-screen {
+    .phone-screen-placeholder {
       width: 100%;
       height: 100%;
-      background:
-        radial-gradient(circle at 24% 0%, rgba(0,200,151,0.12), transparent 36%),
-        #fbfaf6;
-      border-radius: 52px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -2589,22 +2522,12 @@
 
       .phone-stack {
         width: 240px;
-        height: 416px;
-      }
-
-      .phone {
-        width: 240px;
-        height: 416px;
-        border-radius: 50px;
+        height: 473px;
       }
 
       .phone-img {
         width: 240px;
-        height: 416px;
-      }
-
-      .phone-screen {
-        border-radius: 42px;
+        height: 473px;
       }
 
       /* ── Marquee ── */
@@ -3017,12 +2940,7 @@
       </div>
 
       <!-- Phone -->
-      <div class="phone">
-        <div class="phone-notch"></div>
-        <div class="phone-screen">
-          <img class="screen-img" src="phone-screen.png" alt="Price Errors app showing deals" />
-        </div>
-      </div>
+      <img class="phone-img" src="phone-mockup.png" alt="Price Errors app showing a free dog food sample deal" width="292" height="576" />
     </div>
   </div>
 </section>
