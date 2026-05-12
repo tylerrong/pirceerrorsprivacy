@@ -2529,15 +2529,24 @@
         font-size: 0.78rem;
       }
 
-      /* Phone mockup: hide floating badges that overflow on tablet */
-      .phone-notif,
-      .phone-savings {
-        display: none;
-      }
-
       .phone-stack {
         width: 220px;
         height: 433px;
+      }
+
+      .phone-notif {
+        left: -16px;
+        top: 18%;
+        width: 200px;
+        transform: scale(0.88) rotate(-3deg);
+        transform-origin: left center;
+      }
+
+      .phone-savings {
+        right: -14px;
+        bottom: 14%;
+        transform: scale(0.88) rotate(8deg);
+        transform-origin: right center;
       }
 
       .phone-img {
@@ -2688,6 +2697,21 @@
       .phone-stack {
         width: 200px;
         height: 394px;
+      }
+
+      .phone-notif {
+        left: -10px;
+        top: 16%;
+        width: 180px;
+        transform: scale(0.78) rotate(-3deg);
+        transform-origin: left center;
+      }
+
+      .phone-savings {
+        right: -10px;
+        bottom: 12%;
+        transform: scale(0.78) rotate(8deg);
+        transform-origin: right center;
       }
 
       /* ── Marquee ── */
