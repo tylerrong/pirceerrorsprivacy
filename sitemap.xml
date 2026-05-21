@@ -5,7 +5,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://priceerrors.app/</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -17,12 +17,33 @@
   <!-- Blog index -->
   <url>
     <loc>https://priceerrors.app/blog/</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- Blog posts -->
+  <url>
+    <loc>https://priceerrors.app/blog/how-to-check-price-error-before-buying.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://priceerrors.app/blog/target-price-error-guide.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://priceerrors.app/blog/why-price-errors-disappear-fast.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
   <url>
     <loc>https://priceerrors.app/blog/what-is-a-price-error.html</loc>
     <lastmod>2026-05-04</lastmod>
