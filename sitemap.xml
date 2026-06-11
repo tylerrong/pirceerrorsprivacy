@@ -5,7 +5,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://priceerrors.app/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -63,19 +63,6 @@
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-
-  <!-- Anchor pages -->
-  <url>
-    <loc>https://priceerrors.app/#deals</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://priceerrors.app/#download</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
 
   <!-- Legal -->
